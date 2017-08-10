@@ -6,6 +6,7 @@ ofile = "dump.sql" #source file here
 nfile = "dump-updated.sql" #output file here
 sections_to_skip_db_create = []
 sections_to_skip_db_data = ["wp_comments", "wp_commentmeta"]
+update_img_srcs = false
 
 if (ARGV.include?("test")) then
   old_domains = ['www.testdomain.com']
@@ -38,6 +39,10 @@ while (line = old_file.gets)
   end
   
   old_domains.each do |old_domain|
+    if update_img_srcs then
+      line = line.gsub( "src=\"http://" + old_domain, "src=\"http://" + new_domain)
+    end
+    
     #handle the serialized
     line = line.gsub( ":\"http://" + old_domain, ":\"http://" + new_domain)
     line = line.gsub( ":\"" + old_domain, ":\"" + new_domain)
