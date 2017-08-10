@@ -11,4 +11,6 @@ From a command line, enter :
 
 Depending on your database, it may take a bit as it goes line by line. 
 
-Of note, if you want image sources to be updated as well, flip the boolean ```update_img_srcs``` to true. 
+Of note, if you want image sources to be updated as well, flip the boolean ```update_img_srcs``` to true.
+
+Also of note, my site is not https. If yours is, update the http to https in process.rb.   
